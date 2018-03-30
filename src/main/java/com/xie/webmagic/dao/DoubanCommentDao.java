@@ -26,7 +26,7 @@ public class DoubanCommentDao {
         }catch (PropertyVetoException e){
             e.printStackTrace();
         }
-        cpds.setJdbcUrl("jdbc:mysql://140.143.248.15:3306/test");
+        cpds.setJdbcUrl("jdbc:mysql://140.143.248.15:3366/webmagic");
         cpds.setUser("root");
         cpds.setPassword("Xie15210868138!");
 

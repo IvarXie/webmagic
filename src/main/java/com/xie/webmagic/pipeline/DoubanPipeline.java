@@ -1,6 +1,7 @@
 package com.xie.webmagic.pipeline;
 
 
+import com.xie.webmagic.dao.DoubanCommentDao;
 import com.xie.webmagic.model.DoubanComment;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.ResultItems;
@@ -21,6 +22,8 @@ public class DoubanPipeline implements Pipeline {
 
     @Override
     public void process(ResultItems resultItems, Task task) {
+        DoubanCommentDao doubanCommentDao = new DoubanCommentDao();
+
         List<String> userNames = resultItems.get("userName");
         List<String> comments = resultItems.get("comment");
         List<String> evaluateLevels = resultItems.get("evaluateLevel");
@@ -34,6 +37,7 @@ public class DoubanPipeline implements Pipeline {
             doubanComment.setComment(comments.get(i));
             doubanComment.setApprovalCount(Integer.getInteger(approvalCount.get(i)));
             doubanComment.setUserName(userNames.get(i));
+            doubanCommentDao.insert(doubanComment);
         }
 
 
