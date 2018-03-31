@@ -23,7 +23,7 @@ public class DoubanComment  {
     /**
      * 评价分数
      */
-    private String evaluateLevel;
+    private Integer evaluateLevel;
     /**
      * 评价日期
      */
@@ -57,11 +57,11 @@ public class DoubanComment  {
         this.comment = comment;
     }
 
-    public String getEvaluateLevel() {
+    public Integer getEvaluateLevel() {
         return evaluateLevel;
     }
 
-    public void setEvaluateLevel(String evaluateLevel) {
+    public void setEvaluateLevel(Integer evaluateLevel) {
         this.evaluateLevel = evaluateLevel;
     }
 

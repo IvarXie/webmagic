@@ -26,7 +26,7 @@ public class DoubanCommentDao {
         }catch (PropertyVetoException e){
             e.printStackTrace();
         }
-        cpds.setJdbcUrl("jdbc:mysql://140.143.248.15:3366/webmagic");
+        cpds.setJdbcUrl("jdbc:mysql://140.143.248.15:3366/webmagic?useUnicode=true&characterEncoding=utf-8");
         cpds.setUser("root");
         cpds.setPassword("Xie15210868138!");
 
@@ -37,15 +37,11 @@ public class DoubanCommentDao {
             connection = cpds.getConnection();
             // 获取数据库操作对象
             stmt = connection.createStatement();
-
+            String sql = String.format("INSERT INTO `webmagic`.`doubanComment` (`movieName`, `userName`, `comment`, `evaluateLevel`, `evaluateDate`, `approvalCount`) VALUES ('%s', '%s', '%s', %d, '%s', %d);",
+                    doubanComment.getMovieName(),doubanComment.getUserName(),doubanComment.getComment(),doubanComment.getEvaluateLevel(),doubanComment.getEvaluateDate(),doubanComment.getApprovalCount());
+            System.out.println("=================================================================================================="+sql);
             // 操作数据库获取结果集
-            rs = stmt.executeQuery(String.format("INSERT INTO `webmagic`.`doubanComment` (`movieName`, `userName`, `comment`, `evaluateLevel`, `evaluateDate`, `approvalCount`) VALUES ('s%', 's%', 's%', 'd%', 's%', 'd%');",
-                    doubanComment.getMovieName(),doubanComment.getUserName(),doubanComment.getComment(),doubanComment.getEvaluateLevel(),doubanComment.getEvaluateDate(),doubanComment.getApprovalCount()));
-
-            // 处理结果集
-            while (rs.next()) {
-                System.out.println(rs.getString("mername"));
-            }
+            boolean result  = stmt.execute(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

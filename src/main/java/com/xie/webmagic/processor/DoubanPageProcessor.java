@@ -56,7 +56,7 @@ public class DoubanPageProcessor implements PageProcessor {
             Spider.create(new DoubanPageProcessor()).addUrl("https://movie.douban.com/subject/26862829/comments?start="+0+"&limit=20&sort=new_score&status=P&percent_type=")
                     .addPipeline(new JsonFilePipeline("webmagic\\"))
                     .addPipeline(new DoubanPipeline())
-                    .thread(20).run();
+                    .thread(60).run();
 
     }
 }

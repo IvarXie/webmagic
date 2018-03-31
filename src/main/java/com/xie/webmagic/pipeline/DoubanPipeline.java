@@ -32,15 +32,13 @@ public class DoubanPipeline implements Pipeline {
         for(int i = 0;i<userNames.size();i++){
             DoubanComment doubanComment = new DoubanComment();
             doubanComment.setMovieName("芳华");
-            doubanComment.setEvaluateLevel(evaluateLevels.get(i));
+            doubanComment.setEvaluateLevel(Integer.parseInt(evaluateLevels.get(i)));
             doubanComment.setEvaluateDate(evaluateDates.get(i));
             doubanComment.setComment(comments.get(i));
-            doubanComment.setApprovalCount(Integer.getInteger(approvalCount.get(i)));
+            doubanComment.setApprovalCount(Integer.parseInt(approvalCount.get(i)));
             doubanComment.setUserName(userNames.get(i));
             doubanCommentDao.insert(doubanComment);
         }
 
-
-        System.out.println(resultItems.toString());
     }
 }
